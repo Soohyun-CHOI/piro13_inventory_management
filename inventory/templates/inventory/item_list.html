@@ -6,7 +6,9 @@
     <div id="items">
         {% for item in items %}
             <div class="item">
-                <div class="image"><img src="{{ item.image.url }}" alt=""></div>
+                {% if item.image %}
+                    <div class="image"><img src="http://localhost:8000{{ item.image.url }}" alt=""></div>
+                {% endif %}
                 <div class="title"><a href="{% url 'item_read' item.pk %}">{{ item.title }}</a></div>
                 <div class="price">가격 : {{ item.price }}</div>
                 <div class="amount">남은 수량 : {{ item.amount }}</div>

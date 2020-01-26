@@ -12,7 +12,7 @@ class Account(models.Model):
 
 class Item(models.Model):
     title = models.CharField(max_length=50, null=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to="image")
     content = models.TextField(null=True, blank=True)
     price = models.PositiveIntegerField(null=True, blank=True)
     amount = models.PositiveIntegerField(null=True)

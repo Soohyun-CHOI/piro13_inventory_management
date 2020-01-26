@@ -1,5 +1,3 @@
-from django.conf import settings
-from django.conf.urls.static import static
 from django.urls import path
 
 from inventory import views
@@ -17,5 +15,3 @@ urlpatterns = [
     path("account/update/<int:pk>/", views.account_update, name="account_update"),
     path("account/delete/<int:pk>/", views.account_delete, name="account_delete"),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, documnet_root=settings.MEDIA_ROOT)

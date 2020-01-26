@@ -4,7 +4,9 @@
     <div id="head">상품 세부내용</div>
 
     <div id="item">
-        <div class="image"><img src="{{ item.image.path }}" alt=""></div>
+        {% if item.image %}
+            <div class="image"><img src="http://localhost:8000{{ item.image.path }}" alt=""></div>
+        {% endif %}
         <div class="title">{{ item.title }}</div>
         <div class="price">가격 : {{ item.price }}</div>
         <div class="amount">남은 수량 : {{ item.amount }}</div>
