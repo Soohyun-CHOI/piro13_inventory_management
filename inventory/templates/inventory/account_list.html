@@ -1,0 +1,15 @@
+{% extends "inventory/layout.html" %}
+
+{% block content %}
+    <div id="head">거래처 목록</div>
+
+    <div id="accounts">
+        {% for account in accounts %}
+            <div class="account">
+                <div class="name"><a href="{% url 'item_read' account.pk %}">{{ account.name }}</a></div>
+                <div class="call">{{ account.call }}</div>
+                <div class="address">{{ account.address }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

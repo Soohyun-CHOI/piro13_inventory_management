@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
-from inventory.models import Item
+from inventory.forms import ItemForm, AccountForm
+from inventory.models import Item, Account
 
 
 def item_list(request):
@@ -21,46 +22,33 @@ def item_read(request, pk):
 
 def item_create(request):
     if request.method == "POST":
-        title = request.POST.get("title")
-        image = request.POST.get("image")
-        content = request.POST.get("content")
-        price = request.POST.get("price")
-        amount = request.POST.get("amount")
-        # account
-
-        item = Item.objects.create(
-            title=title, image=image, content=content, price=price, amount=amount
-        )
-        return redirect("item_read", item.pk)
-
-    return render(request, "inventory/item_create.html")
+        form = ItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            item = form.save()
+            return redirect("item_read", item.pk)
+    else:
+        form = ItemForm()
+        ctx = {
+            "form": form
+        }
+        return render(request, "inventory/item_create.html", ctx)
 
 
 def item_update(request, pk):
     item = Item.objects.get(pk=pk)
 
-    if request.method == "GET":
+    if request.method == "POST":
+        form = ItemForm(request.POST, request.FILES, instance=item)
+        if form.is_valid():
+            item = form.save()
+        return redirect("item_read", item.pk)
+
+    else:
+        form = ItemForm(instance=item)
         ctx = {
-            "item": item
+            "form": form
         }
         return render(request, "inventory/item_update.html", ctx)
-
-    elif request.method == "POST":
-        title = request.POST["title"]
-        image = request.POST["image"]
-        content = request.POST["content"]
-        price = request.POST["price"]
-        amount = request.POST["amount"]
-        #account
-
-        item.title = title
-        item.image = image
-        item.content = content
-        item.price = price
-        item.amount = amount
-        item.save()
-
-        return redirect("item_read", item.pk)
 
 
 def item_delete(request, pk):
@@ -72,3 +60,62 @@ def item_delete(request, pk):
     elif request.method == "POST":
         item.delete()
         return redirect("item_list")
+
+
+# ==========거래처===============
+
+def account_list(request):
+    accounts = Account.objects.all()
+    ctx = {
+        "accounts": accounts
+    }
+    return render(request, "inventory/account_list.html", ctx)
+
+
+def account_read(request, pk):
+    account = Account.objects.get(pk=pk)
+    ctx = {
+        "account": account
+    }
+    return render(request, "inventory/account_read.html", ctx)
+
+
+def account_create(request):
+    if request.method == "POST":
+        form = AccountForm(request.POST)
+        if form.is_valid():
+            account = form.save()
+            return redirect("account_read", account.pk)
+    else:
+        form = AccountForm()
+        ctx = {
+            "form": form
+        }
+        return render(request, "inventory/account_create.html", ctx)
+
+
+def account_update(request, pk):
+    account = Account.objects.get(pk=pk)
+
+    if request.method == "POST":
+        form = AccountForm(request.POST, instance=account)
+        if form.is_valid():
+            account = form.save()
+        return redirect("account_read", account.pk)
+
+    else:
+        form = ItemForm(instance=account)
+        ctx = {
+            "form": form
+        }
+        return render(request, "inventory/account_update.html", ctx)
+
+
+def account_delete(request, pk):
+    account = Account.objects.get(pk=pk)
+
+    if request.method == "POST":
+        account.delete()
+        return redirect("account_list")
+
+    return redirect("account_read", account.pk)

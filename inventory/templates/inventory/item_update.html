@@ -1,50 +1,11 @@
 {% extends "inventory/layout.html" %}
 
 {% block content %}
-    <div id="head">상품 세부내용</div>
+    <div id="head">상품 세부내용 수정</div>
 
-    <div id="wrap">
-        <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="row">
-                <div class="question">제품명</div>
-                <div class="input">
-                    <input type="text" name="title" value="{{ item.title }}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="question">제품 사진</div>
-                <div class="input">
-                    <input type="file" name="image" value="{{ item.image }}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="question">제품 설명</div>
-                <div class="input">
-                    <textarea name="content">{{ item.content }}</textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="question">가격</div>
-                <div class="input">
-                    <input type="number" name="price" value="{{ item.price }}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="question">남은 수량</div>
-                <div class="input">
-                    <input type="number" name="amount" value="{{ item.amount }}">
-                </div>
-            </div>
-{#            <div class="row">#}
-{#                <div class="question">거래처</div>#}
-{#                <div class="input">#}
-{#                    <input type="text" name="title">#}
-{#                </div>#}
-{#            </div>#}
-            <div id="button">
-                <input type="submit" value="수정">
-            </div>
-        </form>
-    </div>
+    <form action="" method="post" class="item_form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
 {% endblock %}

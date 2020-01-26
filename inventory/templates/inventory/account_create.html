@@ -1,9 +1,9 @@
 {% extends "inventory/layout.html" %}
 
 {% block content %}
-    <div id="head">상품 등록</div>
+    <div id="head">거래처 등록</div>
 
-    <form action="" method="post" class="item_form">
+    <form action="" method="post" class="account_form">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Save</button>

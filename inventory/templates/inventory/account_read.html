@@ -1,0 +1,35 @@
+{% extends "inventory/layout.html" %}
+
+{% block content %}
+    <div id="head">거래처 세부내용</div>
+    <div id="wrap">
+        <div id="account">
+            <div class="name">{{ account.name }}</div>
+            <div class="call">{{ account.call }}</div>
+            <div class="address">{{ account.address }}</div>
+        </div>
+        <div id="item">
+            <div>거래 상품 목록</div>
+            <ul>
+                {% for item in account.item_set %}
+                    <li><a href="{% url 'item_read' item.pk %}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="buttons">
+        <form action="{% url 'account_update' account.pk %}">
+            {% csrf_token %}
+            <div class="update"><input type="submit" value="수정"></div>
+        </form>
+        <form action="{% url 'account_delete' account.pk %}">
+            {% csrf_token %}
+            <div class="delete"><input type="submit" value="삭제"></div>
+        </form>
+        <form action="{% url 'account_list' %}">
+            {% csrf_token %}
+            <div class="list"><input type="submit" value="목록"></div>
+        </form>
+    </div>
+{% endblock %}
