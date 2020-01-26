@@ -43,7 +43,7 @@ def item_update(request, pk):
         ctx = {
             "item": item
         }
-        return render(request, "inventory/update.html", ctx)
+        return render(request, "inventory/item_update.html", ctx)
 
     elif request.method == "POST":
         title = request.POST["title"]
@@ -58,6 +58,7 @@ def item_update(request, pk):
         item.content = content
         item.price = price
         item.amount = amount
+        item.save()
 
         return redirect("item_read", item.pk)
 

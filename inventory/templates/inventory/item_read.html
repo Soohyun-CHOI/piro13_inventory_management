@@ -1,1 +1,29 @@
 {% extends "inventory/layout.html" %}
+
+{% block content %}
+    <div id="head">상품 세부내용</div>
+
+    <div id="item">
+        <div class="image"><img src="{{ item.image }}" alt=""></div>
+        <div class="title">{{ item.title }}</div>
+        <div class="price">가격 : {{ item.price }}</div>
+        <div class="amount">남은 수량 : {{ item.amount }}</div>
+        <div class="content">제품 설명 : {{ item.content }}</div>
+{#        <div class="account">거래처 : <a href=""></a></div>#}
+    </div>
+
+    <div id="buttons">
+        <form action="{% url 'item_update' item.pk %}">
+            {% csrf_token %}
+            <div class="update"><input type="submit" value="수정"></div>
+        </form>
+        <form action="{% url 'item_delete' item.pk %}">
+            {% csrf_token %}
+            <div class="delete"><input type="submit" value="삭제"></div>
+        </form>
+        <form action="{% url 'item_list' %}">
+            {% csrf_token %}
+            <div class="list"><input type="submit" value="목록"></div>
+        </form>
+    </div>
+{% endblock %}

@@ -5,7 +5,27 @@
     <title>Inventory Management</title>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <div id="header">
+        <div id="logo">
+            <img src="" alt="">
+        </div>
+        <div id="title">
+            Inventory Management
+        </div>
+        <div id="nav">
+            <ul>
+                <li><a href="{% url 'item_create' %}">상품 등록</a></li>
+                <li><a href="">거래처 등록</a></li>
+                <li><a href="">거래처 관리</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="body">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div id="footer">여기는 footer</div>
 </body>
 </html>
