@@ -1,0 +1,87 @@
+#item-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+#item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#item .image img {
+    width: 500px; height: 370px;
+    object-fit: cover;
+}
+
+#item .text {
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 15px;
+}
+
+#item .text div {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: #403f48;
+}
+
+#item .text .title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #403f48;
+}
+
+#item .text .account a {
+    color: #95a792;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+#item .text .account a:hover {
+    text-decoration: underline;
+}
+
+#item-wrap #buttons {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid lightgray;
+}
+
+#item-wrap #buttons input {
+    margin-top: 10px;
+    padding: 7px 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    color: white;
+    font-size: 17px;
+    background: #c9485b;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+    width: 100%;
+}
+
+#item-wrap #buttons input:hover {
+    cursor: pointer;
+}
+
+#item-wrap #buttons .right {
+    display: flex;
+}
+
+#item-wrap #buttons .right form:nth-child(1) input {
+    background: #95a792
+}
+
+#item-wrap #buttons .right form:nth-child(2) {
+    margin-left: 5px;
+}
+
+#item-wrap #buttons .right form:nth-child(2) input {
+    background: #596c68;
+}

@@ -1,0 +1,41 @@
+#accounts {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#accounts .account {
+    margin-bottom: 20px;
+    padding: 10px 30px;
+    width: 220px; height: 140px;
+    background: #95a792;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#accounts .account div {
+    font-family: "Noto Sans KR", sans-serif;
+    color: white;
+    font-size: 17px;
+    margin-bottom: 2px;
+}
+
+#accounts .account .name {
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
+    margin-bottom: 8px;
+}
+
+#accounts .account .name a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #403f48;
+    font-weight: 700;
+}
+
+#accounts .account .name a:hover {
+    text-decoration: underline;
+}
