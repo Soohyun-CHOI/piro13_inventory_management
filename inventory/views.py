@@ -54,12 +54,11 @@ def item_update(request, pk):
 def item_delete(request, pk):
     item = Item.objects.get(pk=pk)
 
-    if request.method == "GET":
-        return redirect("item_read", item.pk)
-
-    elif request.method == "POST":
+    if request.method == "POST":
         item.delete()
         return redirect("item_list")
+
+    return redirect("item_read", item.pk)
 
 
 # ==========거래처===============

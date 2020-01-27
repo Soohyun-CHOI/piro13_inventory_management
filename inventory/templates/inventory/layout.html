@@ -1,16 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Inventory Management</title>
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}?ver">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,600|Noto+Sans+KR:300,400,700,900=swap" rel="stylesheet">
 </head>
 <body>
     <div id="header">
-        <div id="logo">
-            <img src="" alt="">
-        </div>
         <div id="title">
-            Inventory Management
+            <a href="{% url 'item_list' %}">
+                Inventory Manage
+            </a>
         </div>
         <div id="nav">
             <ul>
@@ -26,6 +29,12 @@
         {% endblock %}
     </div>
 
-    <div id="footer">여기는 footer</div>
+    <div id="footer">
+        <div>피로그래밍 | 12기 최수현</div>
+        <div>
+            서울대학교 생활과학대학 소비자아동학부 소비자학과 <br/>
+            뭐를 써야 할지는 모르겠지만 뭐라도 길게 한 줄 더 있는 게 예쁠 것 같아서 넣었어요
+        </div>
+    </div>
 </body>
 </html>

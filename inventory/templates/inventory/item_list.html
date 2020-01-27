@@ -1,13 +1,16 @@
 {% extends "inventory/layout.html" %}
 
 {% block content %}
-    <div id="head">상품 목록</div>
+    <div id="head">
+        <div>Item List</div>
+        <div>상품 목록 페이지 입니다. 여기 부연설명은 아무 이유 없고 그냥 예쁘라고 넣었어요.</div>
+    </div>
 
     <div id="items">
         {% for item in items %}
             <div class="item">
                 {% if item.image %}
-                    <div class="image"><img src="http://localhost:8000{{ item.image.url }}" alt=""></div>
+                    <div class="image"><img src="{{ item.image.url }}" alt=""></div>
                 {% endif %}
                 <div class="title"><a href="{% url 'item_read' item.pk %}">{{ item.title }}</a></div>
                 <div class="price">가격 : {{ item.price }}</div>

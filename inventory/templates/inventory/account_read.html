@@ -23,7 +23,7 @@
             {% csrf_token %}
             <div class="update"><input type="submit" value="수정"></div>
         </form>
-        <form action="{% url 'account_delete' account.pk %}">
+        <form action="{% url 'account_delete' account.pk %}" method="post">
             {% csrf_token %}
             <div class="delete"><input type="submit" value="삭제"></div>
         </form>
