@@ -5,12 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Inventory Management</title>
-    <link rel="stylesheet" href="{% static 'css/layout.css' %}?5">
-    <link rel="stylesheet" href="{% static 'css/item_list.css' %}?5">
-    <link rel="stylesheet" href="{% static 'css/item_read.css' %}?5">
-    <link rel="stylesheet" href="{% static 'css/account_list.css' %}?5">
-    <link rel="stylesheet" href="{% static 'css/account_read.css' %}?5">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}?6">
+    <link rel="stylesheet" href="{% static 'css/item_list.css' %}?6">
+    <link rel="stylesheet" href="{% static 'css/item_read.css' %}?6">
+    <link rel="stylesheet" href="{% static 'css/account_list.css' %}?6">
+    <link rel="stylesheet" href="{% static 'css/account_read.css' %}?6">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,600|Noto+Sans+KR:300,400,700,900=swap" rel="stylesheet">
+    {% block headAppend %}
+    {% endblock %}
 </head>
 <body>
     <div id="header">

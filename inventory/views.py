@@ -14,14 +14,24 @@ def item_list(request):
     return render(request, "inventory/item_list.html", ctx)
 
 
-# @require_POST
-# def amount_ajax(request):
-#     pk = request.POST.get("pk")
-#     item = get_object_or_404(Item, pk=pk)
-#     ctx = {
-#         "amount": item.amount,
-#     }
-#     return JsonResponse(ctx)
+@require_POST
+def amount_ajax(request):
+    pk = request.POST.get("pk")
+    status = request.POST.get("status")
+    item = get_object_or_404(Item, pk=pk)
+
+    if status == "plus":
+        item.amount += 1
+    else:
+        if item.amount > 0:
+            item.amount -= 1
+        else:
+            redirect('item_list')
+    item.save()
+    ctx = {
+        "amount": item.amount,
+    }
+    return JsonResponse(ctx)
 
 
 def item_plus(request, pk):
