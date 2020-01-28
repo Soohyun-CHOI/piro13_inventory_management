@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
 
 from inventory.forms import ItemForm, AccountForm
 from inventory.models import Item, Account
@@ -10,6 +12,32 @@ def item_list(request):
         "items": items
     }
     return render(request, "inventory/item_list.html", ctx)
+
+
+# @require_POST
+# def amount_ajax(request):
+#     pk = request.POST.get("pk")
+#     item = get_object_or_404(Item, pk=pk)
+#     ctx = {
+#         "amount": item.amount,
+#     }
+#     return JsonResponse(ctx)
+
+
+def item_plus(request, pk):
+    item = Item.objects.get(pk=pk)
+    item.amount += 1
+    item.save()
+    return redirect('item_list')
+
+
+def item_minus(request, pk):
+    item = Item.objects.get(pk=pk)
+    if item.amount > 0:
+        item.amount -= 1
+        item.save()
+
+    return redirect('item_list')
 
 
 def item_read(request, pk):
@@ -118,3 +146,5 @@ def account_delete(request, pk):
         return redirect("account_list")
 
     return redirect("account_read", account.pk)
+
+

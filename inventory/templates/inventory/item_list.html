@@ -14,9 +14,38 @@
                 {% endif %}
                 <div class="title"><a href="{% url 'item_read' item.pk %}">{{ item.title }}</a></div>
                 <div class="price">가격 : {{ item.price }}</div>
-                <div class="amount">남은 수량 : {{ item.amount }}</div>
-                <!--수량 조절 버튼-->
+                <div id="amount-{{ item.pk }}" class="amount">남은 수량 : {{ item.amount }}</div>
+                <button type="submit" onclick="location.href='{% url 'item_plus' item.pk %}'">+</button>
+                <button type="submit" onclick="location.href='{% url 'item_minus' item.pk %}'">-</button>
             </div>
         {% endfor %}
     </div>
 {% endblock %}
+
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>#}
+{#<script type="text/javascript">#}
+{#    $("#plus-button").click(function (){#}
+{#        var pk = $(this).attr('name');#}
+{#        $.ajax({#}
+{#            type: "post",#}
+{#            url: "{% url 'amount_ajax' %}",#}
+{#            data: {"pk": pk },#}
+{#            success:function (response) {#}
+{#                var amount_plus = response.amount + 1;#}
+{#                $("#amount-"+pk).text("남은 수량 : "+amount_plus);#}
+{#            }#}
+{#        })#}
+{#    });#}
+{#    $("#minus-button").click(function (){#}
+{#        var pk = $(this).attr('name');#}
+{#        $.ajax({#}
+{#            type: "post",#}
+{#            url: "{% url 'amount_ajax' %}",#}
+{#            data: {"pk": pk },#}
+{#            success:function (response) {#}
+{#                var amount_plus = parseInt(response.amount) - 1;#}
+{#                $("#amount-"+pk).text("남은 수량 : "+amount_plus);#}
+{#            }#}
+{#        })#}
+{#    })#}
+{#</script>#}

@@ -29,7 +29,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     background: #F2F2F2;
-    padding: 20px;
+    padding: 10px;
 }
 
 #items .item {
@@ -37,7 +37,7 @@
     box-shadow: 1px 1px 3px #cccccc;
     padding: 10px;
     border-radius: 5px;
-    margin-top: 10px;
+    margin: 10px;
 }
 
 #items img {
@@ -66,4 +66,17 @@
     font-size: 15px;
     font-weight: 300;
     color: #403f48;
+}
+
+#items .amount {
+    margin-bottom: 10px;
+}
+
+#items button {
+    width: 30px; height: 25px;
+    background: #95a792;
+    border-radius: 2px;
+    color: white;
+    border: none;
+    font-size: 20px;
 }
