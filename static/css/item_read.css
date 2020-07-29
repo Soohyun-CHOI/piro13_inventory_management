@@ -26,15 +26,23 @@
 #item .text div {
     font-family: "Noto Sans KR", sans-serif;
     font-size: 17px;
-    font-weight: 300;
-    color: #403f48;
+    font-weight: 700;
+    color: #95a792;
 }
 
 #item .text .title {
     font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     color: #403f48;
+}
+
+#item div span {
+    font-weight: 300;
+    color: #403f48;
+}
+
+#item .text .account {
+    color: #403f48
 }
 
 #item .text .account a {

@@ -34,22 +34,6 @@ def amount_ajax(request):
     return JsonResponse(ctx)
 
 
-def item_plus(request, pk):
-    item = Item.objects.get(pk=pk)
-    item.amount += 1
-    item.save()
-    return redirect('item_list')
-
-
-def item_minus(request, pk):
-    item = Item.objects.get(pk=pk)
-    if item.amount > 0:
-        item.amount -= 1
-        item.save()
-
-    return redirect('item_list')
-
-
 def item_read(request, pk):
     item = Item.objects.get(pk=pk)
     ctx = {
@@ -141,7 +125,7 @@ def account_update(request, pk):
         return redirect("account_read", account.pk)
 
     else:
-        form = ItemForm(instance=account)
+        form = AccountForm(instance=account)
         ctx = {
             "form": form
         }
