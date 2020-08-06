@@ -51,7 +51,7 @@ html, body {
 }
 
 #body {
-    height: 79%;
+    height: auto;
     padding: 0 10%;
 }
 
